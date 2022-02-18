@@ -32,14 +32,14 @@ console.log(validParentheses('())(()'))
 //? CLEVER
 
 function validParentheses2(parens) {
-	let n = 0
+	let cont = 0
 	for (let i = 0; i < parens.length; i++) {
-		parens[i] == '(' ? n++ : n--
-		if (n < 0) break
+		parens[i] == '(' ? cont++ : cont--
+		if (cont < 0) break
 	}
-	return n == 0
+	return cont == 0
 }
-console.log(validParentheses2('())(()'))
+console.log(validParentheses2('((('))
 
 function validParentheses3(parens) {
 	var re = /\(\)/
@@ -48,3 +48,19 @@ function validParentheses3(parens) {
 }
 
 console.log(validParentheses3('())(()'))
+
+function validParentheses4(parens) {
+	let cont = 0
+	for (let i = 0; i < parens.length && cont >= 0; i++) {
+		cont += parens[i] == '(' ? 1 : -1
+	}
+	return cont == 0
+}
+console.log(validParentheses4('((())'))
+
+function validParentheses5(parens) {
+	while (parens.indexOf('()') != -1) {
+		parens = parens.replace('()', '')
+	}
+	return !parens.length
+}
