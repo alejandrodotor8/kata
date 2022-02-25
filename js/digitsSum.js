@@ -24,7 +24,6 @@ console.log(digital_root(942))
 
 //? CLEVER
 function digital_root2(n) {
-	console.log((n - 1) % 9)
 	return ((n - 1) % 9) + 1
 }
 
