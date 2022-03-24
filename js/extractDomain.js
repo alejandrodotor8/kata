@@ -10,13 +10,21 @@ domainName("www.hello.ur") == "hello"
 
 //? MY SOLUTION
 function domainName(url) {
-	if (url.indexOf('http')) {
-		if (url.indexOf('www.')) {
-			return url.substring(url.indexOf('www.') + 4, url.lastIndexOf('.'))
-		}
+	var domain
+
+	if (url.indexOf('//') > -1) {
+		domain = url.split('/')[2]
 	} else {
+		domain = url.split('/')[0]
 	}
+
+	return domain.replace('www.', '').split('.')[0]
 }
 
 console.log(domainName('http://github.com/carbonfive/raygun'))
 //? CLEVER.
+
+function domainName2(url) {
+	return url.replace(/.+\/\/|www.|\..+/g, '')
+}
+console.log(domainName2('http://github.com/carbonfive/raygun'))
